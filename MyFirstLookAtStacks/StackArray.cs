@@ -47,7 +47,7 @@ namespace MyFirstLookAtStacks
         {
             if (_size == 0)
             {
-                throw new Exception("Stack Is empty");
+                throw new Exception("Stack is empty");
             }
         }
 
@@ -65,12 +65,15 @@ namespace MyFirstLookAtStacks
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>)_items).GetEnumerator();
+            for (int i = _size -1; i >= 0; i--)
+            {
+                yield return _items[i];
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<T>)_items).GetEnumerator();
+            return GetEnumerator();
         }
     }
 }
